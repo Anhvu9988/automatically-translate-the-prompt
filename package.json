@@ -1,0 +1,74 @@
+{
+  "name": "codeforces-vietnam-assistant",
+  "displayName": "Codeforces Vietnam Translator",
+  "description": "Tiện ích chỉ cần ghi mã bài Codeforces sẽ tự động lấy bài về và dịch sang Tiếng Việt giữ nguyên 100% công thức toán học KaTeX/LaTeX.",
+  "version": "1.1.0",
+  "publisher": "anhvu",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anhvu/codeforces-vietnam-assistant"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Education",
+    "Other"
+  ],
+  "keywords": [
+    "codeforces",
+    "competitive programming",
+    "vietnamese",
+    "translation",
+    "katex",
+    "latex"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeforces.translateProblem",
+        "title": "Codeforces: Lấy bài tập & Dịch sang Tiếng Việt",
+        "category": "Codeforces",
+        "icon": "$(book)"
+      }
+    ],
+    "configuration": {
+      "title": "Codeforces Vietnam Translator",
+      "properties": {
+        "codeforces.saveMarkdownFiles": {
+          "type": "boolean",
+          "default": true,
+          "description": "Tự động lưu file problem_vi.md và problem_en.md vào thư mục workspace khi tải bài."
+        },
+        "codeforces.problemsDirectory": {
+          "type": "string",
+          "default": "problems",
+          "description": "Thư mục lưu các bài tập markdown trong workspace (để trống nếu muốn lưu trực tiếp ở thư mục gốc)."
+        },
+        "codeforces.geminiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "(Tùy chọn) Google Gemini API Key để nâng cao độ chính xác khi dịch thuật ngữ thuật toán CP."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "google-translate-api-x": "^10.7.3"
+  }
+}
